@@ -1,10 +1,12 @@
 package restaurant.breakfast;
 
-public class BreakfastItem {
+import interfaces.IPay;
+
+public class BreakfastItem implements IPay {
     //Fields
-    String itemName;
-    String itemNote;
-    int price;
+    private String itemName;
+    private String itemNote;
+    private int price;
 
     //Constructor
     public BreakfastItem() {
@@ -49,6 +51,11 @@ public class BreakfastItem {
                 ", itemNote='" + itemNote + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public void pay() {
+        System.out.println("Here you pay...");
     }
 
     //Methods
