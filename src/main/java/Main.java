@@ -100,10 +100,12 @@ public class Main {
 
     public static int pickMenuEntry() {
         System.out.println("""
-                \nENTRY MENU
+                \n=================
+                ENTRY MENU
                 1- Manager Entry
                 2- Customer Entry
                 3- Exit
+                =================
                 """);
         return scanner.nextInt();
     }
@@ -166,11 +168,13 @@ public class Main {
 
     public static int pickManagerMenu() {
         System.out.println("""
-                \nMANAGER MENU
+                \n==================
+                MANAGER MENU
                 1- Add Waiter
                 2- Delete Waiter
                 3- List of Waiters
                 4- Exit
+                ==================
                 """);
         return scanner.nextInt();
     }
@@ -317,11 +321,11 @@ public class Main {
                     }
                     System.out.print("Check Total:" + checkTotal + "\n");
                     scanner.nextLine();
-                    scanner.nextLine();
+                    //scanner.nextLine();
                     IPay ipayB = new BreakfastItem();
                     ipayB.pay();
                     scanner.next();
-                    // NOTE: input of payment here.. deduct from total and show remaining..
+                    // NOTE: input of payment here.. deduct from total and show remaining..(?)
 
                     break;
 
@@ -338,7 +342,8 @@ public class Main {
 
     public static int pickFoodMenu() {
         System.out.println("""
-                \nFOOD MENU
+                \n============================================
+                FOOD MENU
                 Breakfast
                     1-Egg (Sunny side up)  ($4)
                     2-Cheese (Feta)  ($5)
@@ -354,7 +359,7 @@ public class Main {
                     
                 90 - Show all selected food and check total
                 99 - Exit
-                
+                ============================================
                 Please select from the menu above:
                 """);
         return scanner.nextInt();
