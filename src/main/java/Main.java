@@ -20,10 +20,10 @@ public class Main {
     ////Class Fields
     private static final Scanner scanner = new Scanner(System.in);
     private static final Path filePath = Paths.get("C:\\java-Training\\java-projects\\restaurant\\restaurant\\src\\main\\resources\\CustomerRegistry.txt");
-    private static final Path filePathW = Paths.get("C:\\java-Training\\java-projects\\restaurant\\restaurant\\src\\main\\resources\\WaiterRegistry.txt");
+    //private static final Path filePathW = Paths.get("C:\\java-Training\\java-projects\\restaurant\\restaurant\\src\\main\\resources\\WaiterRegistry.txt");
 
     private static Person person1 = new Person();
-    private static Waiter waiterTemp = new Waiter();
+    //private static Waiter waiterTemp = new Waiter();
 
     private static List<Waiter> WaiterArray = new ArrayList<Waiter>();
     private static Waiter John = new Waiter("John","Smith", 111,"ID001","DayShift");
@@ -112,6 +112,7 @@ public class Main {
 
 
     public static void managerMenu() {
+        Waiter waiterTemp = new Waiter();
         WaiterArray.add(John);
         WaiterArray.add(Mike);
         //System.out.println("Current Waiters: " + WaiterArray);
@@ -127,8 +128,8 @@ public class Main {
                     waiterTemp.addWaiter();
                     WaiterArray.add(waiterTemp);
                     //System.out.println("List of waiters: " + WaiterArray);
-
                     break;
+
                 case 2:
                     System.out.println("You selected to delete a waiter...");
                     System.out.println("Select the waiter (index No) to be deleted from the list below:");
@@ -234,8 +235,8 @@ public class Main {
             //System.out.println(Arrays.toString(tempFile.split(",")));
             // Transfer the file fields to an array...
             String[] tempArray = tempFile.split(","+"\n");
-            List<String> tempArrayList = new ArrayList<>();
 
+            //List<String> tempArrayList = new ArrayList<>();
         //    Transfer from Array to ArrayList
        //     for (var e: tempArray) {
        //         tempArrayList.add(e);
@@ -308,7 +309,8 @@ public class Main {
                     break;
 
                 case 90:
-                    System.out.println("You selected: Show all selected food and total");
+                    System.out.println("You selected: 90 - Show all selected food and total:");
+                    System.out.println("----------------------------------------------------");
                     //System.out.println(BreakfastMenuArray);
                     for (BreakfastItem breakfastItem: BreakfastMenuArray) {
                         System.out.println("Breakfast Item: " + breakfastItem.getItemName() + " " + breakfastItem.getItemNote() + " $" + breakfastItem.getPrice());
@@ -319,14 +321,23 @@ public class Main {
                     for (DinnerItem dinnerItem: DinnerMenuArray) {
                         System.out.println("Dinner Item: " + dinnerItem.getItemName() + " " + dinnerItem.getItemNote() + " $" + dinnerItem.getPrice());
                     }
-                    System.out.print("Check Total:" + checkTotal + "\n");
+                    System.out.print("Check Total: $" + checkTotal + "\n");
                     scanner.nextLine();
                     //scanner.nextLine();
-                    IPay ipayB = new BreakfastItem();
-                    ipayB.pay();
-                    scanner.next();
-                    // NOTE: input of payment here.. deduct from total and show remaining..(?)
+                    // Payment and checking against the checkTotal:
+                    IPay ipayP = new Person();
+                    ipayP.pay();
+                    int paidAmount = scanner.nextInt();
 
+                    while(paidAmount<checkTotal) {
+                        ipayP.pay();
+                        System.out.println("Please pay the remaining amount: $" + (checkTotal-paidAmount));
+                        int diff = scanner.nextInt();
+                        paidAmount = paidAmount + diff;
+                    }
+                    if (paidAmount >= checkTotal) {
+                        System.out.println("You paid in full, Thanks!!");
+                    }
                     break;
 
                 case 99:

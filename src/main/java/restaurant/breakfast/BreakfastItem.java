@@ -2,7 +2,7 @@ package restaurant.breakfast;
 
 import interfaces.IPay;
 
-public class BreakfastItem implements IPay {
+public class BreakfastItem  {
     //Fields
     private String itemName;
     private String itemNote;
@@ -51,11 +51,6 @@ public class BreakfastItem implements IPay {
                 ", itemNote='" + itemNote + '\'' +
                 ", price=" + price +
                 '}';
-    }
-
-    @Override
-    public void pay() {
-        System.out.println("This is where you pay, enter the amount to pay:");
     }
 
     //Methods

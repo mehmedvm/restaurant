@@ -1,8 +1,10 @@
 package person;
 
+import interfaces.IPay;
+
 import java.util.Scanner;
 
-public class Person {
+public class Person implements IPay {
     //Fields
     private String firstName;
     private String lastName;
@@ -64,4 +66,9 @@ public class Person {
         this.phoneNo = scanner.nextInt();
     }
 
+    @Override
+    public void pay() {
+        System.out.println("This is where you pay, enter the amount to pay:");
+    }
 }
+
